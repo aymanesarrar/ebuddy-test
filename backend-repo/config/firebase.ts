@@ -2,8 +2,9 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import * as admin from "firebase-admin";
 import { serviceAccountKey } from "./serviceAccountKey";
+import { IFirebaseConfig } from "shared";
 
-const firebaseConfig = {
+const firebaseConfig: IFirebaseConfig = {
   apiKey: process.env.API_KEY,
   authDomain: process.env.AUTH_DOMAIN,
   projectId: process.env.PROJECT_ID,

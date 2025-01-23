@@ -151,6 +151,9 @@ importers:
 
   shared:
     devDependencies:
+      '@types/node':
+        specifier: ^22.10.10
+        version: 22.10.10
       typescript:
         specifier: ^5.7.3
         version: 5.7.3
@@ -1832,6 +1835,12 @@ packages:
     resolution: {integrity: sha512-vOTpLduLkZXePLxHiHsBLp98mHGnl8RptV4YAO3HfKO5UHjDvySGbxKtpYfy8Sx5+WKcgc45qNreJJRVM3L6mw==}
     dependencies:
       undici-types: 6.19.8
+    dev: true
+
+  /@types/node@22.10.10:
+    resolution: {integrity: sha512-X47y/mPNzxviAGY5TcYPtYL8JsY3kAq2n8fMmKoRCxq/c4v4pyGNCzM2R6+M5/umG4ZfHuT+sgqDYqWc9rJ6ww==}
+    dependencies:
+      undici-types: 6.20.0
     dev: true
 
   /@types/node@22.10.9:
