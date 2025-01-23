@@ -1,16 +1,26 @@
 "use client";
 import { useGetUserQuery } from "@/apis/userApi";
 import { Button, Stack } from "@mui/material";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
+import UserProfile from "@/components/user-profile";
 
 export default function Page() {
-  const { data, isLoading } = useGetUserQuery("");
-  if (isLoading) return <div>isLoading ...</div>;
+  const [fetch, setFetch] = useState(true);
+  const { data, isLoading } = useGetUserQuery("", { skip: fetch });
+
   console.log(data);
   return (
     <Stack alignItems="center" justifyContent="center" minHeight="100vh">
-      <h1>Dashboard</h1>
-      <Button variant="contained">fetch</Button>
+      {isLoading ? (
+        <CircularProgress />
+      ) : !data ? (
+        <Button onClick={() => setFetch(false)} variant="contained">
+          fetch
+        </Button>
+      ) : (
+        <UserProfile />
+      )}
     </Stack>
   );
 }

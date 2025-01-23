@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { IUser } from "shared";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: "http://localhost:3003",
@@ -19,7 +20,7 @@ export const userApi = createApi({
   reducerPath: "userApi",
   baseQuery,
   endpoints: (builder) => ({
-    getUser: builder.query({
+    getUser: builder.query<IUser, void>({
       query: () => "/users/fetch-user-data",
     }),
   }),
