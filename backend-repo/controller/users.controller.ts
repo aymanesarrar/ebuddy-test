@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { adminApp } from "../config/firebase";
+import { IUser } from "shared";
 const fetchUserData = async (request: Request, res: Response) => {
   try {
     const user = await adminApp.auth().getUser(request.uid);
@@ -12,7 +13,6 @@ const fetchUserData = async (request: Request, res: Response) => {
 };
 
 const updateUserData = async (request: Request, res: Response) => {
-  console.log(request.body, "request.body");
   try {
     const userRecord = await adminApp
       .auth()

@@ -26,6 +26,9 @@ importers:
       '@types/node':
         specifier: ^22.10.7
         version: 22.10.9
+      '@types/shared':
+        specifier: workspace:^
+        version: link:../shared
       bcrypt:
         specifier: ^5.1.1
         version: 5.1.1
@@ -99,6 +102,9 @@ importers:
       '@reduxjs/toolkit':
         specifier: ^2.5.0
         version: 2.5.0(react-redux@9.2.0)(react@19.0.0)
+      '@types/shared':
+        specifier: workspace:^
+        version: link:../shared
       firebase:
         specifier: ^11.2.0
         version: 11.2.0
@@ -141,6 +147,12 @@ importers:
         version: 3.4.17
       typescript:
         specifier: ^5
+        version: 5.7.3
+
+  shared:
+    devDependencies:
+      typescript:
+        specifier: ^5.7.3
         version: 5.7.3
 
 packages:
@@ -4615,6 +4627,7 @@ packages:
   /object-hash@3.0.0:
     resolution: {integrity: sha512-RSn9F68PjH9HqtltsSnqYC1XXoWe9Bju5+213R98cNGttag9q9yAOTzdbsqvIa7aNm5WffBZFpWYr2aWrklWAw==}
     engines: {node: '>= 6'}
+    requiresBuild: true
 
   /object-inspect@1.13.3:
     resolution: {integrity: sha512-kDCGIbxkDSXE3euJZZXzc6to7fCrKHNI/hSRQnRuQ+BWjFNzZwiFF8fj/6o2t2G9/jTj8PSIYTfCLelLZEeRpA==}

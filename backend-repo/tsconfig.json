@@ -12,7 +12,10 @@
 
     "skipLibCheck": true,
     "outDir": "dist",
-    "rootDir": "."
+    "rootDir": ".",
+    "paths": {
+      "@types/shared": ["../shared/dist"]
+    }
   },
   "include": ["*.ts"],
   "exclude": ["node_modules", "dist"]
