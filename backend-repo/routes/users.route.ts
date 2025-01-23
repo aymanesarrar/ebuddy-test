@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import { fetchUserData, updateUserData } from "../controller/users.controller";
 import { verifyToken } from "../middleware/auth.middleware";
 

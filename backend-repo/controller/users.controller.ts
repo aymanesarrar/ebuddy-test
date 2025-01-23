@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import * as admin from "firebase-admin";
 import { adminApp } from "../config/firebase";
 const fetchUserData = async (request: Request, res: Response) => {
   try {
@@ -7,6 +6,7 @@ const fetchUserData = async (request: Request, res: Response) => {
 
     res.json({ user });
   } catch (error) {
+    console.log(error, "error");
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
@@ -19,6 +19,7 @@ const updateUserData = async (request: Request, res: Response) => {
       .updateUser(request.uid, request.body);
     res.json({ userRecord });
   } catch (error) {
+    console.log(error, "error");
     res.status(400).json({ error: "Bad Request" });
   }
 };

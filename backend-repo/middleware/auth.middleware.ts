@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from "express";
+import { NextFunction, Response } from "express";
 import { adminApp } from "../config/firebase";
 import { CreateUserRequest } from "../types/user.entity";
 const verifyToken = async (
@@ -22,6 +22,7 @@ const verifyToken = async (
     }
     // req.user = user;
   } catch (error) {
+    console.log(error, "error");
     res.status(401).json({ error: "Unauthorized" });
   }
 };

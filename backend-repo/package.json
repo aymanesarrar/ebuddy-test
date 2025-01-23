@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon index.ts",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
@@ -29,6 +30,10 @@
     "typescript": "^5.7.3"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.17"
+    "@eslint/js": "^9.18.0",
+    "@types/cors": "^2.8.17",
+    "eslint": "^9",
+    "globals": "^15.14.0",
+    "typescript-eslint": "^8.21.0"
   }
 }

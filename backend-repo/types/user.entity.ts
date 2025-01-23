@@ -1,8 +1,9 @@
-import { Request, Response } from "express";
+import { Request } from "express";
 
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Express {
-    export interface Request {
+    interface Request {
       uid: string;
     }
   }
