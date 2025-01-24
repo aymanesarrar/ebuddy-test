@@ -2,7 +2,7 @@
 
 ## Setup
 
-- on the root, fe repo, be repo
+- on the root
 
 ```
 pnpm install
