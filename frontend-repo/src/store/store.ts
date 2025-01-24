@@ -7,6 +7,7 @@ export const makeStore = () => {
     reducer: {
       [userApi.reducerPath]: userApi.reducer,
     },
+
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat(userApi.middleware),
   });

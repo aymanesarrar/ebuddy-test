@@ -5,6 +5,6 @@ import { verifyToken } from "../middleware/auth.middleware";
 const usersRouter = express.Router();
 
 usersRouter.get("/fetch-user-data", verifyToken, fetchUserData);
-usersRouter.post("/update-user-data", verifyToken, updateUserData);
+usersRouter.put("/update-user-data", verifyToken, updateUserData);
 
 export { usersRouter };

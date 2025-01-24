@@ -1,16 +1,27 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { IUser } from "shared";
 
+let sessionToken: string | null | undefined = null;
+
+const fetchSessionToken = async () => {
+  if (!sessionToken) {
+    const response = await fetch("http://localhost:3000/api/session", {
+      credentials: "include",
+    });
+    const tokenData = await response.json();
+    sessionToken = tokenData.tokenId;
+  }
+  return sessionToken;
+};
+
 const baseQuery = fetchBaseQuery({
   baseUrl: "http://localhost:3003",
   async prepareHeaders(headers, api) {
-    const data = await fetch("http://localhost:3000/api/session", {
-      credentials: "include",
-    });
-    const token = await data.json();
-    const tokenId = token.tokenId;
-    if (tokenId) {
-      headers.set("authorization", `Bearer ${tokenId}`);
+    if (!sessionToken) {
+      sessionToken = await fetchSessionToken();
+    }
+    if (sessionToken) {
+      headers.set("authorization", `Bearer ${sessionToken}`);
     }
     return headers;
   },
@@ -19,11 +30,32 @@ const baseQuery = fetchBaseQuery({
 export const userApi = createApi({
   reducerPath: "userApi",
   baseQuery,
+  tagTypes: ["User"],
   endpoints: (builder) => ({
-    getUser: builder.query<IUser, void>({
-      query: () => "/users/fetch-user-data",
+    getUser: builder.query<IUser, any>({
+      query: () => "/fetch-user-data",
+      providesTags: ["User"],
+    }),
+    updateUser: builder.mutation({
+      query: (data) => ({
+        url: "/update-user-data",
+        method: "PUT",
+        body: data,
+      }),
+      invalidatesTags: ["User"],
+    }),
+    logoutUser: builder.mutation({
+      query: () => ({
+        url: "http://localhost:3000/api/logout",
+        method: "POST",
+      }),
+
+      onQueryStarted: async () => {
+        sessionToken = null;
+      },
     }),
   }),
 });
 
-export const { useGetUserQuery } = userApi;
+export const { useGetUserQuery, useUpdateUserMutation, useLogoutUserMutation } =
+  userApi;

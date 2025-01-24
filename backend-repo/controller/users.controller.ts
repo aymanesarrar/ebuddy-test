@@ -4,7 +4,7 @@ const fetchUserData = async (request: Request, res: Response) => {
   try {
     const user = await adminApp.auth().getUser(request.uid);
 
-    res.json({ user });
+    res.json({ ...user });
   } catch (error) {
     console.log(error, "error");
     res.status(500).json({ error: "Internal Server Error" });
