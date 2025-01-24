@@ -22,7 +22,11 @@ export default function Page() {
             fetch
           </Button>
         ) : (
-          <UserProfile displayName={data?.displayName} email={data?.email} />
+          <UserProfile
+            displayName={data?.displayName}
+            email={data?.email}
+            disabled={data?.disabled}
+          />
         )}
         <Logout />
       </Stack>

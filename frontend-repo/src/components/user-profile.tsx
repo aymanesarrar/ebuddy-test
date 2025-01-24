@@ -80,7 +80,6 @@ export default function UserProfile(user: Partial<IUser>) {
                 checked={formData.disabled}
                 onChange={handleInputChange("disabled")}
                 disabled={!isEditing}
-                defaultChecked={user.disabled}
               />
             </label>
           </div>
